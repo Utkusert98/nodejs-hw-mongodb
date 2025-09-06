@@ -1,0 +1,48 @@
+{
+  "name": "nodejs-hw-mongodb",
+  "version": "1.0.0",
+  "description": "Node.js Homework project with MongoDB, authentication and contacts management",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Utkusert98/nodejs-hw-mongodb.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "express",
+    "auth",
+    "contacts"
+  ],
+  "author": "Utku Sert",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Utkusert98/nodejs-hw-mongodb/issues"
+  },
+  "homepage": "https://github.com/Utkusert98/nodejs-hw-mongodb#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.3.0",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "http-errors": "^2.0.0",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.1",
+    "pino-http": "^10.5.0"
+  }
+}
