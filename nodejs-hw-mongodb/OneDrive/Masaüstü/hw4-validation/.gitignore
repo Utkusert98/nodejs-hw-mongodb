@@ -1,0 +1,19 @@
+/node_modules
+.env
+.vscode
+.DS_Store
+.idea
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build/coverage/cache
+/dist
+/build
+/coverage
+.npm
+.eslintcache

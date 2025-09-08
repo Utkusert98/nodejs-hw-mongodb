@@ -1,0 +1,6 @@
+node_modules/
+.env
+echo node_modules/ > .gitignore
+echo .env >> .gitignore
+echo Thumbs.db >> .gitignore
+echo .DS_Store >> .gitignore
