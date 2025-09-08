@@ -1,0 +1,69 @@
+tags:
+  - Contacts
+summary: Update a contact
+operationId: patchContact
+description: Update an existing contact with the given ID.
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+    description: ID of the contact to be updated.
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Name of the contact
+            example: John Doe
+          phoneNumber:
+            type: string
+            description: Phone number of the contact
+            example: '0000000004'
+          email:
+            type: string
+            description: Email address of the contact
+            example: andriy7@example.com
+          isFavourite:
+            type: boolean
+            description: Whether the contact is a favorite
+            example: true
+          contactType:
+            type: string
+            enum: [work, home, personal]
+            description: Type of the contact
+            example: work
+          photo:
+            type: string
+            format: binary
+            description: Photo of the contact
+responses:
+  '200':
+    description: Successfully patched a contact!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully patched a contact!
+            data:
+              type: object
+              $ref: ..\..\..\components\schemas\contact.yaml
+  '404':
+    $ref: ..\..\..\components\responses\404.yaml
