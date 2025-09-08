@@ -1,69 +1,27 @@
-tags:
-  - Contacts
-summary: Update a contact
-operationId: patchContact
-description: Update an existing contact with the given ID.
-security:
-  - bearerAuth: []
+tags: [Contacts]
+summary: Update contact
+operationId: updateContact
+description: Update an existing contact partially.
+security: [ { bearerAuth: [] } ]
 parameters:
-  - in: path
-    name: id
+  - name: id
+    in: path
     required: true
-    schema:
-      type: string
-    description: ID of the contact to be updated.
+    schema: { type: string }
 requestBody:
   required: true
   content:
-    multipart/form-data:
+    application/json:
       schema:
-        type: object
-        properties:
-          name:
-            type: string
-            description: Name of the contact
-            example: John Doe
-          phoneNumber:
-            type: string
-            description: Phone number of the contact
-            example: '0000000004'
-          email:
-            type: string
-            description: Email address of the contact
-            example: andriy7@example.com
-          isFavourite:
-            type: boolean
-            description: Whether the contact is a favorite
-            example: true
-          contactType:
-            type: string
-            enum: [work, home, personal]
-            description: Type of the contact
-            example: work
-          photo:
-            type: string
-            format: binary
-            description: Photo of the contact
+        $ref: '../../../components/schemas/Contact.yaml'
 responses:
   '200':
-    description: Successfully patched a contact!
+    description: Updated
     content:
       application/json:
         schema:
-          type: object
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: Successfully patched a contact!
-            data:
-              type: object
-              $ref: ..\..\..\components\schemas\contact.yaml
+          $ref: '../../../components/schemas/Contact.yaml'
+  '400': { description: Bad request }
+  '401': { description: Unauthorized }
   '404':
-    $ref: ..\..\..\components\responses\404.yaml
+    $ref: '../../../components/responses/NotFound.yaml'

@@ -1,6 +1,0 @@
-name: contactId
-in: path
-required: true
-schema:
-  type: string
-description: MongoDB ObjectId of the contact

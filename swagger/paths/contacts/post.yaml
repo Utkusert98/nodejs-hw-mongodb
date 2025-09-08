@@ -1,71 +1,20 @@
-tags:
-  - Contacts
+tags: [Contacts]
 summary: Create contact
 operationId: createContact
-description: 'Create a contact with payload'
-security:
-  - bearerAuth: []
+description: Create a new contact.
+security: [ { bearerAuth: [] } ]
 requestBody:
+  required: true
   content:
-    multipart/form-data:
+    application/json:
       schema:
-        type: object
-        required:
-          - _id
-          - name
-          - phoneNumber
-          - email
-          - contactType
-
-        properties:
-          name:
-            description: "Contact's name"
-            type: string
-            example: 'John Doe'
-          phoneNumber:
-            description: "Contact's phone number"
-            type: string
-            example: '0000000004'
-          email:
-            description: "Contact's email"
-            type: string
-            example: 'andriy7@example.com'
-          isFavourite:
-            description: 'Is contact favourite or not'
-            type: boolean
-            example: false
-          contactType:
-            description: 'Type of the contact'
-            type: string
-            enum: ['work', 'home', 'personal']
-          userId:
-            description: 'User contact id'
-            type: string
-            example: 67196703e44c6d14a0d572a8
-          photo:
-            description: "Contact's photo"
-            type: string
-            format: binary
+        $ref: '../../components/schemas/Contact.yaml'
 responses:
-  '200':
-    description: Creates a contact
+  '201':
+    description: Created
     content:
       application/json:
         schema:
-          type: object
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: Successfully created a contact!
-            data:
-              type: object
-              $ref: ..\..\components\schemas\contact.yaml
-  '404':
-    $ref: '../../components/responses/404.yaml'
+          $ref: '../../components/schemas/Contact.yaml'
+  '400': { description: Bad request }
+  '401': { description: Unauthorized }

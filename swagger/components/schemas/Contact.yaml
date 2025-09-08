@@ -1,5 +1,7 @@
 type: object
-required: [name, email]
+required:
+  - name
+  - email
 properties:
   id:
     type: string
