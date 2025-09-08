@@ -61,7 +61,7 @@ export const resetPasswordController = async (req, res, next) => {
     let decoded;
     try {
       decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (e) {
+    } catch (_e) {
       return next(createHttpError(401, 'Token is expired or invalid.'));
     }
 
